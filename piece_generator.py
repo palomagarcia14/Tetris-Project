@@ -2,7 +2,7 @@ import random
 
 #this function takes no input and randomly selects a type of tetris piece
     #it outputs the starting coordinates within the grid of all 4 squares and what color they should be
-def piece_generator
+def piece_generator():
     piece_type = random.randint(1,8)
     if piece_type == 1: #cyan straight horizontal line ("I")
         starting_position = [[0, 3], [0, 4], [0, 5], [0,6]] #starting coordinates of this piece
