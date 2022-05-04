@@ -12,8 +12,8 @@ import pandas as pd
 win = visual.Window([1000,700], color='black', fullscr=0)
 
 #using a matrix to keep track of where fallen pieces are
-#creates 20 lists (rows) of 10 elements each (all zeroes)
-background_grid = [[0 for i in range(10)] for i in range(20)]
+#creates 15 lists (rows) of 10 elements each (all zeroes)
+background_grid = [[(0, 0, 0) for i in range(10)] for i in range(15)]
 
 #working on displaying the grid as an imahe
 for i in range(len(background_grid)):
@@ -29,17 +29,17 @@ core.wait(5)
 
 #need to include a while statement here that triggers this to repeat when a piece falls
 piece_type = random.randint(1,8)
-if piece_type == 1:
+if piece_type == 1: #cyan straight horizontal line
     piece = visual #need to design piece (but don't draw on screen!)
-elif piece_type == 2:
+elif piece_type == 2: #royal blue left L
     piece = visual
-elif piece_type == 3:
+elif piece_type == 3: #orange right L
     piece = visual
-elif piece_type == 4:
+elif piece_type == 4: #yellow square
     piece = visual
-elif piece_type == 5:
+elif piece_type == 5: #green parallelogram-type shape
     piece = visual
-elif piece_type == 6:
+elif piece_type == 6: #red parallelogram-type shape
     piece = visual
-else:
+else: #purple T
     piece = visual
