@@ -15,11 +15,11 @@ import numpy as np
 import pandas as pd
 
 # Size of window and pixels
-full_scr = input('full screen? 1(yes) or 0 (no)')
+full_scr = input('start game? 1(yes) or 0 (no)')
 if full_scr:
-  win = win = visual.Window([1440,900], color='black', fullscr=0)
+  win = win = visual.Window([1000,700], color='black', fullscr=0)
 else:
-  win = visual.Window([600,400], color='black', fullscr=0)
+  print(':(')
 
  # Boxes
 mybutton1 = visual.Rect(win, pos=(-.3,0),lineColor='white', fillColor='gray', width=.5, height=1.2)
