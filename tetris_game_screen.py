@@ -29,7 +29,7 @@ intro_text.draw()
 
 # Boxes
 mybox1 = visual.Rect(win, pos=(-.3,0),lineColor='white', lineWidth=5, width=.5, height=1.2)
-mybox2_text = visual.TextStim(win, pos =(-.3,0.2),text = 'Level', color='orange')
+mybox2_text = visual.TextStim(win, pos =(0.3,0.2),text = 'Level', color='orange')
 mybox2 = visual.Rect(win, pos=(0.3,0.2), lineColor='white', lineWidth=5, width=.5, height=0.2)
 mybox3_text = visual.TextStim(win, pos=(0.3,0), text = 'Score', color = 'orange')
 mybox3 = visual.Rect(win, pos=(0.3,0), lineColor='white', lineWidth=5, width=.5, height=0.2)
