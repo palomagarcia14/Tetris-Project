@@ -28,8 +28,6 @@ while True:
     key_input = pygame.key.get_pressed()
     if key_input[pygame.K_LEFT]:
         p1 -= step
-    if key_input[pygame.K_UP]:
-        p2 -= step
     if key_input[pygame.K_RIGHT]:
         p1 += step
     if key_input[pygame.K_DOWN]:
