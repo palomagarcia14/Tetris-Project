@@ -11,7 +11,9 @@ SQUARE_LEN = 25
 SQUARE_WID = 25
 color = (220,220,220)
 _VARS = {'surf': False}
-rect = pg.Rect(250, 100, SQUARE_LEN, SQUARE_WID)
+STARTX = 250
+step = 25
+rect = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
 b1 = pg.Rect(5*25, 20*25,250,25)
 b2 = pg.Rect(5*25, 4*25,250,25)
 b3 = pg.Rect(4*25, 4*25,25,425)
@@ -25,9 +27,10 @@ def main():
         _VARS['surf'].fill(BLACK)
         drawGrid1()
         drawBounds()
+        leftright()
         squareFall()
         pg.display.update()
-        time.sleep(.7)
+        time.sleep(1)
 
 
 
@@ -50,11 +53,23 @@ def drawBounds():
 def squareFall():
     if rect.colliderect(b1):
             pg.draw.rect(_VARS['surf'], [255,0,0], rect)
-            #time.sleep(.7)
     else:
         v = [0, 25]
         rect.move_ip(v)
         pg.draw.rect(_VARS['surf'], [255,0,0], rect)
+
+def leftright():
+    key_input = pg.key.get_pressed()
+    if key_input[pg.K_LEFT]:
+        b = [-step, 0]
+        rect.move_ip(b)
+    if key_input[pg.K_RIGHT]:
+        c = [step, 0]
+        rect.move_ip(c)
+
+
+
+
 
 
 
