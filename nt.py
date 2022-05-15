@@ -13,11 +13,12 @@ color = (220,220,220)
 _VARS = {'surf': False}
 STARTX = 250
 step = 25
-rect = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
+rect = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID*4)
 b1 = pg.Rect(5*25, 20*25,250,25)
 b2 = pg.Rect(5*25, 4*25,250,25)
 b3 = pg.Rect(4*25, 4*25,25,425)
 b4 = pg.Rect(15*25, 4*25,25,425)
+
 
 def main():
     pg.init()
@@ -66,16 +67,6 @@ def leftright():
     if key_input[pg.K_RIGHT]:
         c = [step, 0]
         rect.move_ip(c)
-
-
-
-
-
-
-
-
-
-
 
 
 
