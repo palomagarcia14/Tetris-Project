@@ -2,6 +2,8 @@ import sys
 import pygame as pg
 from pygame.locals import KEYDOWN, K_q
 import time
+import random
+
 
 SCREENSIZE = WIDTH, HEIGHT = 600, 600
 BLACK = (0, 0, 0)
@@ -14,14 +16,45 @@ _VARS = {'surf': False}
 STARTX = 250
 step = 25
 rect = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
-s1 = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
-s2 = pg.Rect(STARTX + SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
-s3 = pg.Rect(STARTX, 125, SQUARE_LEN, SQUARE_WID)
-s4 = pg.Rect(STARTX + SQUARE_LEN, 125, SQUARE_LEN, SQUARE_WID)
+
 b1 = pg.Rect(5*25, 20*25,250,25)
 b2 = pg.Rect(5*25, 4*25,250,25)
 b3 = pg.Rect(4*25, 4*25,25,425)
 b4 = pg.Rect(15*25, 4*25,25,425)
+plist = [1, 2, 3 ,4,5]
+randi = random.choice(plist)
+if randi == 1: #square
+    s1 = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
+    s2 = pg.Rect(STARTX + SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+    s3 = pg.Rect(STARTX, 125, SQUARE_LEN, SQUARE_WID)
+    s4 = pg.Rect(STARTX + SQUARE_LEN, 125, SQUARE_LEN, SQUARE_WID)
+    scolor = [255,255,0]
+elif randi == 2:#line
+    s1 = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
+    s2 = pg.Rect(STARTX + SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+    s3 = pg.Rect(STARTX- SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+    s4 = pg.Rect(STARTX+ SQUARE_LEN +SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+    scolor = [0,255,255]
+elif randi == 3:#w
+    s1 = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
+    s2 = pg.Rect(STARTX + SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+    s4 = pg.Rect(STARTX- SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+    s3 = pg.Rect(STARTX, 125, SQUARE_LEN, SQUARE_WID)
+    scolor = [255,0,255]
+elif randi == 4:
+    s1 = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
+    s2 = pg.Rect(STARTX + SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+    s4 = pg.Rect(STARTX- SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+    s3 = pg.Rect(STARTX- SQUARE_LEN, 125, SQUARE_LEN, SQUARE_WID)
+    scolor = [255, 128, 0]
+elif randi ==5:
+    s1 = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
+    s2 = pg.Rect(STARTX + SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+    s3 = pg.Rect(STARTX- SQUARE_LEN, 125, SQUARE_LEN, SQUARE_WID)
+    s4 = pg.Rect(STARTX, 125, SQUARE_LEN, SQUARE_WID)
+    scolor = [0,255,128]
+
+
 
 def main():
     pg.init()
@@ -36,6 +69,8 @@ def main():
         pg.display.update()
         time.sleep(1)
 
+
+#def sets():
 
 
 
@@ -58,22 +93,23 @@ def drawBounds():
 
 
 def squareFall():
+
     if s3.colliderect(b1):
-            pg.draw.rect(_VARS['surf'], [255,0,0], s1)
-            pg.draw.rect(_VARS['surf'], [255,0,0], s2)
-            pg.draw.rect(_VARS['surf'], [255,0,0], s3)
-            pg.draw.rect(_VARS['surf'], [255,0,0], s4)
+            pg.draw.rect(_VARS['surf'], scolor, s1)
+            pg.draw.rect(_VARS['surf'], scolor, s2)
+            pg.draw.rect(_VARS['surf'], scolor, s3)
+            pg.draw.rect(_VARS['surf'], scolor, s4)
 
     else:
         v = [0, 25]
         s1.move_ip(v)
-        pg.draw.rect(_VARS['surf'], [255,0,0], s1)
+        pg.draw.rect(_VARS['surf'], scolor, s1)
         s2.move_ip(v)
-        pg.draw.rect(_VARS['surf'], [255,0,0], s2)
+        pg.draw.rect(_VARS['surf'], scolor, s2)
         s3.move_ip(v)
-        pg.draw.rect(_VARS['surf'], [255,0,0], s3)
+        pg.draw.rect(_VARS['surf'], scolor, s3)
         s4.move_ip(v)
-        pg.draw.rect(_VARS['surf'], [255,0,0], s4)
+        pg.draw.rect(_VARS['surf'], scolor, s4)
 
 def leftright():
     key_input = pg.key.get_pressed()
