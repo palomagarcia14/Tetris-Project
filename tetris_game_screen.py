@@ -1,3 +1,4 @@
+# Hayley spent about 6 hours familiarizing herself with psychopy and learning how to draw text and boxes with various commands. 
 # -*- coding: utf-8 -*-
 """tetris_game_screen
 
