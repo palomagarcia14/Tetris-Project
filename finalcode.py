@@ -25,6 +25,10 @@ b1 = pg.Rect(5*25, 20*25,250,25)
 b2 = pg.Rect(5*25, 4*25,250,25)
 b3 = pg.Rect(4*25, 4*25,25,425)
 b4 = pg.Rect(15*25, 4*25,25,425)
+# this following list allows each piece shape to correspond to a particular integer. This way, when a random integer is called from the list, a random
+# shape will also appear. This took a lot of trial and error because our group didn't understand the difference between global and local variables. 
+# This made it difficult for us to treat each piece independently. It took around 3 hours of group work to trouble shoot and Ashley spent an additional 4 
+# hours to get everything in the correct coordinates, and reacting smoothly with the rest of the code. 
 plist = [1, 2, 3 ,4,5]
 randi = random.choice(plist)
 if randi == 1: #square
@@ -57,8 +61,13 @@ elif randi == 5:
     s3 = pg.Rect(STARTX- SQUARE_LEN-75, 125, SQUARE_LEN, SQUARE_WID)
     s4 = pg.Rect(STARTX-75, 125, SQUARE_LEN, SQUARE_WID)
     scolor = [0,255,128]
-canfall = True
+canfall = True # the canfall variable was very helpful for us as we struggled for a long time with how to signal to the game to allow a new piece to fall. 
+# This was another thing that benefited fromt he knowledge of global variables. We also had to be very strategic as to when we were updating this variable.
+#Overall piece generation was extremely hard for the group to achieve through our trials we looked a many online resources. We spent hours brainstorming 
+# and Ashley spent around 8 hours trying many different variations of code to get this to work. 
 
+# the Alist was a later addition to the code to make the game more interesting. The starting Y coordinates are lower on the screen so these pieces 
+# are generated at different times than the pieces from the other lists. 
 alist = [1, 2, 3 ,4,5]
 randa = random.choice(alist)
 if randa == 1: #square
@@ -93,8 +102,13 @@ elif randa == 5:
     acolor = [0,255,128]
 canfalla = True
 
+#the current_score variable was added by Paloma who researched how to have a global variable that can be updated constantly throughout the game. This was 
+# important and also allowed us to better understand how global variables functioned. 
 current_score = 0
 
+# this main section was a new concept to the team that required some research into how it can be used effectively, and how it functions. This research was
+# done by the whole group when we were learning how pygame functioned. We ran into a lot of issues with this early on, but eventually figured out how to make 
+# it work for us. 
 def main():
     global canfall, s1,s2,s3,s4,scolor
     global canfalla, a1,a2,a3,a4,acolor
@@ -113,7 +127,7 @@ def main():
             squareFall()
         elif canfall == False:
             drawGrid1()
-            plist = [1, 2, 3 ,4,5]
+            plist = [1, 2, 3 ,4,5] # this code from above is repeated here in order to get a new piece to generate every time the old piece can no longer fall
             randi = random.choice(plist)
             if randi == 1: #square
                 s1 = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
@@ -196,10 +210,13 @@ def main():
 
         pg.display.update()
         gameover()
-        time.sleep(1)
+        time.sleep(1) 
 
 
-#def sets():
+
+#this code draws the grid and score board using for-loops of coordinates. This was the 3rd grid we made, our first two were just made of lines, but this final one was made of
+#individual squares using loops. The first two grids were made by Hayley and Ashley coded the final grid. Paloma worked on the score board display and had
+# to research how to use pygames to display figures, and numbers that could be updated. This also made good use of global variables.
 
 def drawGrid1():
     global current_score
@@ -217,6 +234,8 @@ def drawGrid1():
 
     pg.display.flip()
 
+#these bounds were created by Ashley in an attempt to have the shapes recognize when they have fallen too far. It took around 1.5 hours to have it working 
+# with the rest of the code.
 def drawBounds():
 
     pg.draw.rect(_VARS['surf'], [255,0,255], b1)
@@ -225,12 +244,15 @@ def drawBounds():
     pg.draw.rect(_VARS['surf'], [255,0,255], b4)
     pg.draw.rect(_VARS['surf'], [255,0,0], lilguy)
 
-
+# the Squarefall method was tricky because it started out just moving a single square, but the group had to transition it to make a set of squares that 
+# combine to form a full piece. It was tricky to brainstorm how to get the individual squares to all move as a unit, we had to research was to reference them
+# in a way that could be updated. The group did research on this and Ashley spent an additional 10 hours doing trial and error on this function from start to finish. 
 def squareFall():
     global canfall, s1,s2,s3,s4,scolor
     global current_score
 
-
+#this function checks if the piece has collided with the boundaries, signaling that a new piece should be generated. It also adds the score which is a function that
+# Paloma worked to get functioning properly. 
     if s3.colliderect(b1) :
             pg.draw.rect(_VARS['surf'], scolor, s1)
             pg.draw.rect(_VARS['surf'], scolor, s2)
@@ -241,7 +263,7 @@ def squareFall():
 
 
     else:
-
+#this function allows the piece to move down as a unit.
         v = [0, 25]
         s1.move_ip(v)
         pg.draw.rect(_VARS['surf'], scolor, s1)
@@ -251,7 +273,7 @@ def squareFall():
         pg.draw.rect(_VARS['surf'], scolor, s3)
         s4.move_ip(v)
         pg.draw.rect(_VARS['surf'], scolor, s4)
-
+#the following code is similar to above, just added to make the game more interesting and adjusted. 
 def squareFalla():
     global canfalla, a1,a2,a3,a4,acolor
     global current_score
@@ -273,7 +295,8 @@ def squareFalla():
         a4.move_ip(d)
         pg.draw.rect(_VARS['surf'], acolor, a4)
 
-
+#this function allows the small red square ton move around the screen. Ashley did research and trial and error to add this. It started as a function that 
+#could move the pieces as they fell in tetris, but once we switched games, it changed to move the red square around the pieces. 
 def leftright():
     key_input = pg.key.get_pressed()
     if key_input[pg.K_LEFT]:
@@ -289,6 +312,9 @@ def leftright():
         z = [0, step]
         lilguy.move_ip(z)
 
+#As a planB, we came up with a option to change our game from tetris to dodge the block. As part of that plan, we created this function that makes the player
+#lose the game if the red block collides with the falling pieces. This function was written by Ashley to shut off the game. Unfortunately, this came after many 
+#hours of trying to figure out how to implement all of the functions of tetris.
 def gameover():
     global canfalla, a1,a2,a3,a4
     global canfall, s1,s2,s3,s4
@@ -303,7 +329,9 @@ def checkEvents():
         if event.type == pg.QUIT:
             sys.exit()
 
-
+            
+#This start screen was written by Hayley and took a lot of trial and error to format and also allow it to switch to the correct screen once the keys have been
+#pressed. 
 def start_screen():
     run = True
     while run:
