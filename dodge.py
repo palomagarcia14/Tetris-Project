@@ -5,6 +5,7 @@ import time
 import random
 
 pg.font.init()
+font = pg.font.SysFont('freesansbold.ttf', 48)
 
 SCREENSIZE = WIDTH, HEIGHT = 600, 600
 BLACK = (0, 0, 0)
@@ -18,7 +19,6 @@ _VARS = {'surf': False}
 STARTX = 250
 step = 25
 lilguy = pg.Rect(STARTX, 425, SQUARE_LEN, SQUARE_WID)
-Screen = pg.display.set_mode((600,600))
 
 b1 = pg.Rect(5*25, 20*25,250,25)
 b2 = pg.Rect(5*25, 4*25,250,25)
@@ -278,32 +278,38 @@ def checkEvents():
         if event.type == pg.QUIT:
             sys.exit()
 
-run = True
-while run:
-    Screen = pg.display.set_mode((600,600))
-    Screen.fill((0,0,0))
-    font = pg.font.SysFont('freesansbold.ttf', 48)
-    font2 = pg.font.SysFont('freesansbold.ttf', 30)
-    tetris_text = font.render("Let's play Tetris!", True, WHITE)
-    how2play_text = font.render("HOW TO PLAY:", True, RED)
-    instructions1_text = font2.render("Blocks will fall from the top of the grid. Using the arrows", True, WHITE)
-    instructions2_text = font2.render("on your keyboard, you can move the blocks around, either", True, WHITE)
-    instructions3_text = font2.render("left to right and/or you can rotate them. The objective is to", True, WHITE)
-    instructions4_text = font2.render("get all the blocks to fill all the empty spaces in a line. When", True, WHITE)
-    instructions5_text = font2.render("you do this, the blocks vanish and you will be rewarded points.", True, WHITE)
-    start_text = font.render("Press any key to start.", True, RED)
-    Screen.blit(tetris_text, (275, 25))
-    Screen.blit(how2play_text, (285, 150))
-    Screen.blit(instructions1_text, (120,210))
-    Screen.blit(instructions2_text, (110, 235))
-    Screen.blit(instructions3_text, (115, 260))
-    Screen.blit(instructions4_text, (112,285))
-    Screen.blit(instructions5_text, (100,310))
-    Screen.blit(start_text, (235, 400))
-    pg.display.update()
-    for event in pg.event.get():
-        if event.type == pg.QUIT:
-            run = False
-        if event.type == pg.KEYDOWN:
-            main()
-pg.quit()
+def start_screen():
+    run = True
+    while run:
+        Screen.fill((0,0,0))
+        font2 = pg.font.SysFont('freesansbold.ttf', 26)
+        dodge_text = font.render("Dodge the blocks!", True, WHITE)
+        how2play_text = font.render("HOW TO PLAY:", True, RED)
+        instructions1_text = font2.render("Blocks will fall from the top of the grid. Using the arrows on your", True, WHITE)
+        instructions2_text = font2.render("your keyboard, you can move the red square left, right, up, and ", True, WHITE)
+        instructions3_text = font2.render("down.The objective is to dodge the falling blocks. When you", True, WHITE)
+        instructions4_text = font2.render("succesfully dodge the falling blocks, you will be rewarded points.", True, WHITE)
+        instructions5_text = font2.render("If the blocks and red square collide, the game will be terminated.", True, WHITE)
+        start_text = font.render("Press any key to start.", True, RED)
+        Screen.blit(dodge_text, (160, 25))
+        Screen.blit(how2play_text, (180, 150))
+        Screen.blit(instructions1_text, (36,210))
+        Screen.blit(instructions2_text, (34, 235))
+        Screen.blit(instructions3_text, (35, 260))
+        Screen.blit(instructions4_text, (28,285))
+        Screen.blit(instructions5_text, (33,310))
+        Screen.blit(start_text, (135, 400))
+        pg.display.update()
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                run = False
+
+            if event.type == pg.KEYDOWN:
+                main()
+
+    pg.quit()
+
+Screen = pg.display.set_mode((600,600))
+pg.display.set_caption('Dodge the blocks')
+
+start_screen()
