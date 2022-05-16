@@ -1,14 +1,31 @@
-#As a group, we spent about 10 hours planning our project, and downloading and learning Psychopy. We didn’t end up using PsychoPy, so we also all spent about 4 hours learning pygame after switching. We also spent about 8 hours together trying to figure out how the class data structure worked in python for piece generation, but ultimately gave up after trial and error and opted for a randomized list.
+# As a group, we spent about 10 hours planning our project, and downloading and learning Psychopy. We didn’t end up using PsychoPy, so we also all spent 
+# about 4 hours learning pygame after switching. We also spent about 8 hours together trying to figure out how the class data structure worked in python 
+# for piece generation, but ultimately gave up after trial and error and opted for a randomized list.
 
+# In addition to the 20 hours spent in class, office hours, and group meetings to become acquainted with PyschoPy and Pygame, Hayley spent a great deal 
+# of time coding the key presses, text, game and instruction screens. She spent about 6 hours learning how to draw text/buttons and position them on the
+# screen in PsychoPy. She also experimented with PsychoPy events like the mouse click and key press reactions. She spent another 6 hours applying these 
+# PsychoPy commands to create the first outlines of the introduction and game screens. When the group decided to use Pygame instead of PsychoPy, Hayley 
+# then spent another 10 hours familiarizing herself with Pygame functions and converting the code that she had for the instruction and game screens. She
+# spent an additional 4 hours experimenting with the keypress commands, getting a figure to move according to the arrows on the keyboard, and getting the
+# instructions screen to shift to the game screen in reaction to a keypress. This took longer than anticipated because her keyboard initially would not 
+# respond to keypresses because of limitations in her privacy settings. Hayley then spent about 5 hours helping her group to create different blocks and
+# write functions that were an attempt to randomize the shapes, colors, and rotations of the blocks. When the group decided to shift from creating Tetris
+# to a “Dodge the blocks” game, she spent another 6 hours translating pre-existing code so that it would be compatible with the new game and instruction 
+# screens. 
+
+# Imports: 
 import sys
 import pygame as pg
 from pygame.locals import KEYDOWN, K_q
 import time
 import random
 
+# Font - Hayley initialized and created the conditions for the font. 
 pg.font.init()
 font = pg.font.SysFont('freesansbold.ttf', 48)
 
+# Constants: 
 gameDisplay = pg.display.set_mode((600, 600))
 SCREENSIZE = WIDTH, HEIGHT = 600, 600
 BLACK = (0, 0, 0)
@@ -121,6 +138,7 @@ def main():
         _VARS['surf'].fill(BLACK)
         drawBounds()
         leftright()
+        # Hayley added text to top of the screen: 
         font = pg.font.SysFont('freesansbold.ttf', 48)
         dodge_text = font.render("Dodge the blocks!", True, WHITE)
         Screen.blit(dodge_text, (160,25))
@@ -323,9 +341,7 @@ def gameover():
     if lilguy.colliderect(a1) or lilguy.colliderect(a2) or lilguy.colliderect(a3) or lilguy.colliderect(a4)  or lilguy.colliderect(s1) or lilguy.colliderect(s2)  or lilguy.colliderect(s3)  or lilguy.colliderect(s4):
         sys.exit()
 
-
-
-
+# Hayley created a function that terminates the code in response to a keypress. 
 def checkEvents():
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -334,11 +350,14 @@ def checkEvents():
             
 #This start screen was written by Hayley and took a lot of trial and error to format and also allow it to switch to the correct screen once the keys have been
 #pressed. 
+
+# Function for instructions screen:
 def start_screen():
     run = True
     while run:
         Screen.fill((0,0,0))
         font2 = pg.font.SysFont('freesansbold.ttf', 26)
+        # Write Text: 
         dodge_text = font.render("Dodge the blocks!", True, WHITE)
         how2play_text = font.render("HOW TO PLAY:", True, RED)
         instructions1_text = font2.render("Blocks will fall from the top of the grid. Using the arrows on your", True, WHITE)
@@ -347,6 +366,7 @@ def start_screen():
         instructions4_text = font2.render("succesfully dodge the falling blocks, you will be rewarded points.", True, WHITE)
         instructions5_text = font2.render("If the blocks and red square collide, the game will be terminated.", True, WHITE)
         start_text = font.render("Press any key to start.", True, RED)
+        # Draw text to screen: 
         Screen.blit(dodge_text, (160, 25))
         Screen.blit(how2play_text, (180, 150))
         Screen.blit(instructions1_text, (36,210))
@@ -356,6 +376,7 @@ def start_screen():
         Screen.blit(instructions5_text, (33,310))
         Screen.blit(start_text, (135, 400))
         pg.display.update()
+        # Change to game screen if key pressed: 
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 run = False
@@ -368,4 +389,4 @@ def start_screen():
 Screen = pg.display.set_mode((600,600))
 pg.display.set_caption('Dodge the blocks')
 
-start_screen()
+start_screen() # Start game 
