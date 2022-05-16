@@ -1,3 +1,6 @@
+# Hayley found this code online (https://pastebin.com/embed_js/yaWTeF6y) and used it as stand-in code while the game screen was being completed. 
+# She used it to learn how to implement key presses to transition from the instructions screen to the actual game. She spent about 6 hours studying 
+# the code and figuring out where to splice in an intro screen. 
 
 import pygame
 import random
