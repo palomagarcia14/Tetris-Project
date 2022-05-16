@@ -1,3 +1,6 @@
+# Hayley spent about 4 hours converting the code she had written for the original intro slide into text code that is compatible with pygame. 
+# She also created a function that reacted to keypresses. 
+
 import sys
 import pygame
 from pygame.locals import *
