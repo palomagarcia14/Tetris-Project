@@ -1,3 +1,6 @@
+# Hayley spent about 5 hours identifying different RGB code combinations, creating different blocks, and writing functions that were 
+# an attempt to randomize the shapes, colors, and rotations of these blocks. 
+
 import pygame
 import random
 
