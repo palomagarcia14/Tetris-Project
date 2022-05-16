@@ -1,3 +1,6 @@
+# Hayley took the working code and readjusted the previous intro screen so that it was compatible with the new screen dimensions.
+# She also added text to the game screen and made edits throughout the to accomodate the need for text fonts and colors. This took about two hours. 
+
 import sys
 import pygame as pg
 from pygame.locals import KEYDOWN, K_q
@@ -277,11 +280,14 @@ def checkEvents():
     for event in pg.event.get():
         if event.type == pg.QUIT:
             sys.exit()
-
+     
+# Function for instructions screen
 def start_screen():
     run = True
     while run:
+        # Make background black: 
         Screen.fill((0,0,0))
+        # Create text: 
         font2 = pg.font.SysFont('freesansbold.ttf', 26)
         dodge_text = font.render("Dodge the blocks!", True, WHITE)
         how2play_text = font.render("HOW TO PLAY:", True, RED)
@@ -291,6 +297,7 @@ def start_screen():
         instructions4_text = font2.render("succesfully dodge the falling blocks, you will be rewarded points.", True, WHITE)
         instructions5_text = font2.render("If the blocks and red square collide, the game will be terminated.", True, WHITE)
         start_text = font.render("Press any key to start.", True, RED)
+        # Draw text on screen: 
         Screen.blit(dodge_text, (160, 25))
         Screen.blit(how2play_text, (180, 150))
         Screen.blit(instructions1_text, (36,210))
@@ -300,6 +307,7 @@ def start_screen():
         Screen.blit(instructions5_text, (33,310))
         Screen.blit(start_text, (135, 400))
         pg.display.update()
+        # Key presses: 
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 run = False
@@ -309,7 +317,8 @@ def start_screen():
 
     pg.quit()
 
+# Window dimensions and caption: 
 Screen = pg.display.set_mode((600,600))
 pg.display.set_caption('Dodge the blocks')
 
-start_screen()
+start_screen() # Start game
