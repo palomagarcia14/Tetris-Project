@@ -1,3 +1,5 @@
+# Hayley wrote this code while exploring pygame and its text functions. She spent about an hour experimenting with colors and fonts
+# and learning how to flip text to the screen in pygame. 
 import sys
 import pygame
 from pygame.locals import *
