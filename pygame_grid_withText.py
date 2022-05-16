@@ -1,3 +1,4 @@
+# Hayley spent another 2 hours exploring pygame, adjusting previous code and adding text. 
 import sys
 import pygame
 from pygame.locals import KEYDOWN, K_q
