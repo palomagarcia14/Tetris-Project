@@ -47,16 +47,18 @@ elif randi == 4:
     s4 = pg.Rect(STARTX- SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
     s3 = pg.Rect(STARTX- SQUARE_LEN, 125, SQUARE_LEN, SQUARE_WID)
     scolor = [255, 128, 0]
-elif randi ==5:
+elif randi == 5:
     s1 = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
     s2 = pg.Rect(STARTX + SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
     s3 = pg.Rect(STARTX- SQUARE_LEN, 125, SQUARE_LEN, SQUARE_WID)
     s4 = pg.Rect(STARTX, 125, SQUARE_LEN, SQUARE_WID)
     scolor = [0,255,128]
+canfall = True
 
 
 
 def main():
+    global canfall, s1,s2,s3,s4
     pg.init()
     _VARS['surf'] = pg.display.set_mode(SCREENSIZE)
     while True:
@@ -65,14 +67,52 @@ def main():
         drawGrid1()
         drawBounds()
         leftright()
-        squareFall()
+        if canfall == True:
+            squareFall()
+        elif canfall == False:
+            plist = [1, 2, 3 ,4,5]
+            randi = random.choice(plist)
+            if randi == 1: #square
+                s1 = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
+                s2 = pg.Rect(STARTX + SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+                s3 = pg.Rect(STARTX, 125, SQUARE_LEN, SQUARE_WID)
+                s4 = pg.Rect(STARTX + SQUARE_LEN, 125, SQUARE_LEN, SQUARE_WID)
+                scolor = [255,255,0]
+            elif randi == 2:#line
+                s1 = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
+                s2 = pg.Rect(STARTX + SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+                s3 = pg.Rect(STARTX- SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+                s4 = pg.Rect(STARTX+ SQUARE_LEN +SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+                scolor = [0,255,255]
+            elif randi == 3:#w
+                s1 = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
+                s2 = pg.Rect(STARTX + SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+                s4 = pg.Rect(STARTX- SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+                s3 = pg.Rect(STARTX, 125, SQUARE_LEN, SQUARE_WID)
+                scolor = [255,0,255]
+            elif randi == 4:
+                s1 = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
+                s2 = pg.Rect(STARTX + SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+                s4 = pg.Rect(STARTX- SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+                s3 = pg.Rect(STARTX- SQUARE_LEN, 125, SQUARE_LEN, SQUARE_WID)
+                scolor = [255, 128, 0]
+            elif randi ==5:
+                s1 = pg.Rect(STARTX, 100, SQUARE_LEN, SQUARE_WID)
+                s2 = pg.Rect(STARTX + SQUARE_LEN, 100, SQUARE_LEN, SQUARE_WID)
+                s3 = pg.Rect(STARTX- SQUARE_LEN, 125, SQUARE_LEN, SQUARE_WID)
+                s4 = pg.Rect(STARTX, 125, SQUARE_LEN, SQUARE_WID)
+                scolor = [0,255,128]
+            pg.draw.rect(_VARS['surf'], scolor, s1)
+            pg.draw.rect(_VARS['surf'], scolor, s2)
+            pg.draw.rect(_VARS['surf'], scolor, s3)
+            pg.draw.rect(_VARS['surf'], scolor, s4)
+            canfall = True
+
         pg.display.update()
         time.sleep(1)
 
 
 #def sets():
-
-
 
 def drawGrid1():
     for i in range(5, 20):
@@ -87,18 +127,18 @@ def drawBounds():
     pg.draw.rect(_VARS['surf'], [255,0,255], b2)
     pg.draw.rect(_VARS['surf'], [255,0,255], b3)
     pg.draw.rect(_VARS['surf'], [255,0,255], b4)
-    #pg.display.flip()
-
-
 
 
 def squareFall():
+    global canfall, s1,s2,s3,s4
 
     if s3.colliderect(b1):
             pg.draw.rect(_VARS['surf'], scolor, s1)
             pg.draw.rect(_VARS['surf'], scolor, s2)
             pg.draw.rect(_VARS['surf'], scolor, s3)
             pg.draw.rect(_VARS['surf'], scolor, s4)
+            canfall = False
+
 
     else:
         v = [0, 25]
@@ -110,6 +150,7 @@ def squareFall():
         pg.draw.rect(_VARS['surf'], scolor, s3)
         s4.move_ip(v)
         pg.draw.rect(_VARS['surf'], scolor, s4)
+
 
 def leftright():
     key_input = pg.key.get_pressed()
@@ -125,7 +166,6 @@ def leftright():
         s2.move_ip(c)
         s3.move_ip(c)
         s4.move_ip(c)
-
 
 
 def checkEvents():
