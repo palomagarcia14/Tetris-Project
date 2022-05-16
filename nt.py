@@ -4,7 +4,7 @@ from pygame.locals import KEYDOWN, K_q
 import time
 import random
 
-
+gameDisplay = pg.display.set_mode((600, 600))
 SCREENSIZE = WIDTH, HEIGHT = 600, 600
 BLACK = (0, 0, 0)
 WHITE = (255,255,255)
@@ -55,7 +55,7 @@ elif randi == 5:
     scolor = [0,255,128]
 canfall = True
 
-
+current_score = 0
 
 def main():
     global canfall, s1,s2,s3,s4
@@ -64,12 +64,13 @@ def main():
     while True:
         checkEvents()
         _VARS['surf'].fill(BLACK)
-        drawGrid1()
         drawBounds()
         leftright()
         if canfall == True:
+            drawGrid1()
             squareFall()
         elif canfall == False:
+            drawGrid1()
             plist = [1, 2, 3 ,4,5]
             randi = random.choice(plist)
             if randi == 1: #square
@@ -111,13 +112,20 @@ def main():
         pg.display.update()
         time.sleep(1)
 
-
 #def sets():
 
 def drawGrid1():
     for i in range(5, 20):
         for j in range(5, 15):
             pg.draw.rect(_VARS['surf'], color, pg.Rect(j*25, i*25,25,25), 2)
+    pg.draw.rect(_VARS['surf'], (255, 0, 0), pg.Rect(435, 210, 125, 100))
+    pg.font.init()
+    my_font1 = pg.font.SysFont('Comic Sans MS', 50)
+    text_surface = my_font1.render(str(current_score), False, (0, 0, 0))
+    gameDisplay.blit(text_surface, (485,245))
+    my_font2 = pg.font.SysFont('Comic Sans MS', 30)
+    text_surface2 = my_font2.render('Score:', False, (0, 0, 0))
+    gameDisplay.blit(text_surface2, (445,215))
 
     pg.display.flip()
 
