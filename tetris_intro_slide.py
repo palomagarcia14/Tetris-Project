@@ -1,3 +1,5 @@
+# Hayley spent about 4 hours learning how to draw text and buttons and position them on the screen in psychopy. She also familiarzed
+# herself with the psychopy event functions, experimenting with mouse reactions. 
 # -*- coding: utf-8 -*-
 """Tetris Intro Slide.ipynb
 
