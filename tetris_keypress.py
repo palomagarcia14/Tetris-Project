@@ -1,3 +1,7 @@
+# Hayley spent about 4 hours familiarzing herself with the pygame module and its keypress commands. This was more time consuming than
+# expected because her keyboard was not reacting at all to the code. She had to go into her settings and change the access settings for her keyboard.
+# This code was the group's first attempt to work with keypresses in pygame. 
+# get out
 # -*- coding: utf-8 -*-
 """tetris_keypress.ipynb
 
