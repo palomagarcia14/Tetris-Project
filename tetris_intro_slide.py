@@ -1,5 +1,6 @@
-# Hayley spent about 4 hours learning how to draw text and buttons and position them on the screen in psychopy. She also familiarzed
-# herself with the psychopy event functions, experimenting with mouse reactions. 
+# Hayley spent about 6 hours learning how to draw text and buttons and position them on the screen in psychopy. She also familiarzed
+# herself with the psychopy event functions, experimenting with mouse reactions. When we initially planned to create three levels of 
+# various difficulties, this was the first attempt to create buttons that would react to mouse clicks. 
 # -*- coding: utf-8 -*-
 """Tetris Intro Slide.ipynb
 
