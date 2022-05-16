@@ -1,3 +1,5 @@
+# Hayley spent about 6 hours with this code, experimenting with various pygame functions and figuring out how to make the grid. It 
+# took several hours to get the padding and horizontal and vertical lines of the grid in just the right place. 
 import sys
 import pygame
 from pygame.locals import KEYDOWN, K_q
