@@ -1,3 +1,5 @@
+#As a group, we spent about 10 hours planning our project, and downloading and learning Psychopy. We didn’t end up using PsychoPy, so we also all spent about 4 hours learning pygame after switching. We also spent about 8 hours together trying to figure out how the class data structure worked in python for piece generation, but ultimately gave up after trial and error and opted for a randomized list.
+
 import sys
 import pygame as pg
 from pygame.locals import KEYDOWN, K_q
