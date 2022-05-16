@@ -1,4 +1,5 @@
-# Hayley spent about 6 hours familiarizing herself with psychopy and learning how to draw text and boxes with various commands. 
+# Hayley spent about 6 hours familiarizing herself with psychopy and learning how to draw text and boxes with various commands. This 
+# code was a first attempt to create the outline of a grid for our game. 
 # -*- coding: utf-8 -*-
 """tetris_game_screen
 
