@@ -47,7 +47,7 @@ b4 = pg.Rect(15*25, 4*25,25,425)
 # this following list allows each piece shape to correspond to a particular integer. This way, when a random integer is called from the list, a random
 # shape will also appear. This took a lot of trial and error because our group didn't understand the difference between global and local variables. 
 # This made it difficult for us to treat each piece independently. It took around 3 hours of group work to trouble shoot and Ashley spent an additional 4 
-# hours to get everything in the correct coordinates, and reacting smoothly with the rest of the code. 
+# hours to get everything in the correct coordinates, and 2 hours debugging to get the code reacting smoothly with the rest of the code. 
 plist = [1, 2, 3 ,4,5]
 randi = random.choice(plist)
 if randi == 1: #square
